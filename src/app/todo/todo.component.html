@@ -1,0 +1,62 @@
+<div class="container">
+  <h1>Task Scheduler</h1>
+  <div class="stats-box">
+    <p>Total : {{ todos.length }}</p>
+    <p>Pending : {{ activeItemsCount }}</p>
+  </div>
+  <input [(ngModel)]="newTodo" placeholder="Add a new task" />
+  <input [(ngModel)]="newTodoDuration" type="number" min="1" step="1" placeholder="Duration in minutes">
+  <button (click)="addTodo()">Add Task</button>
+  <mat-form-field appearance="fill">
+  <mat-label>Filter by Status</mat-label>
+  <mat-select [(value)]="filter" (valueChange)="applyFilter()">
+    <mat-option value="all">All</mat-option>
+    <mat-option value="completed">Completed</mat-option>
+    <mat-option value="active">Active</mat-option>
+  </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Filter by Priority</mat-label>
+    <mat-select [(value)]="priorityFilter" (valueChange)="applyFilter()">
+      <mat-option value="all">All Priorities</mat-option>
+      <mat-option value="high">High</mat-option>
+      <mat-option value="medium">Medium</mat-option>
+      <mat-option value="low">Low</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Filter by Category</mat-label>
+    <mat-select [(value)]="categoryFilter" (valueChange)="applyFilter()">
+      <mat-option value="all">All Categories</mat-option>
+      <mat-option value="Office Work">Office Work</mat-option>
+      <mat-option value="Household Chores">Household Chores</mat-option>
+      <mat-option value="Relax Activity">Relax Activity</mat-option>
+      <mat-option value="Other">Other</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <ul>
+    <li *ngFor="let todo of filteredTodos" [ngClass]="getTaskColor(todo)">
+      <fa-icon [icon]="['fas', 'tasks']"></fa-icon>
+      <input type="checkbox" [(ngModel)]="todo.completed" (change)="updateTodo(todo)" />
+      <span *ngIf="!todo.editing" [class.completed]="todo.completed" (dblclick)="editTodo(todo)">{{ todo.title }}</span>
+      <input *ngIf="todo.editing" [(ngModel)]="todo.title" (blur)="finishEditing(todo)"
+        (keyup.enter)="finishEditing(todo)" class="editing" />
+      <select [(ngModel)]="todo.priority" (change)="updateTodo(todo)">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <select [(ngModel)]="todo.category">
+        <option value="Other">Other</option>
+        <option value="Office Work">Office Work</option>
+        <option value="Household Chores">Household Chores</option>
+        <option value="Relax Activity">Relax Activity</option>
+      </select>
+      <small>{{todo.duration}} min</small>
+      <button (click)="startTask(todo)">Start</button>
+      <button (click)="deleteTodo(todo)">Delete</button>
+    </li>
+  </ul>
+</div>

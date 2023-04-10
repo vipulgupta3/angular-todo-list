@@ -1,1 +1,145 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('media\children image.avif');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 30px;
+}
+
+.container {
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  background-color: #77ace1;
+  margin-bottom: 20px;
+  color: rgb(233, 244, 26);
+  padding: 15px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+input[type="text"],
+select {
+  padding: 10px;
+  font-size: 16px;
+  margin-inline-end: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin-bottom: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px 12px;
+  margin-left: 10px;
+  /* Add space between the button and the input fields */
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+  background-color: #f8f9fa;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.filters button {
+  background-color: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.filters button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.stats-box {
+  height: 70px;
+  width: 80px;
+  background-color: #f44336;
+  border-radius: 100%;
+  color: rgb(233, 244, 26);
+  padding: 10px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.stats-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+.stats-box p {
+  margin-top: 8px;
+  margin-bottom: 1px;
+  font-size: 14px;
+  font-weight: bold;
+}
+@keyframes bounce {
+
+  40%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translateY(-290px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(420px);
+    }
+
+}
+
+.stats-box:hover {
+  animation: bounce 5s 2;
+  position: relative;
+  z-index: 1;
+}
